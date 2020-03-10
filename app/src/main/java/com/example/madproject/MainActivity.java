@@ -2,7 +2,6 @@ package com.example.madproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -22,13 +21,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
 public class MainActivity extends AppCompatActivity {
-    private CallbackManager callbackManager;
+  //  private CallbackManager callbackManager;
     public static final String TAG = "MainActivity";
     //a constant for detecting the login intent result
     private static final int RC_SIGN_IN = 234;
@@ -47,7 +41,7 @@ int ch=0;
 
         //first we intialized the FirebaseAuth object
         mAuth = FirebaseAuth.getInstance();
-        // Initialize your instance of callbackManager//
+      /*  // Initialize your instance of callbackManager//
         callbackManager = CallbackManager.Factory.create();
 
         // Register your callback//
@@ -75,7 +69,7 @@ int ch=0;
                     public void onError(FacebookException exception) {
                         Log.d(TAG,"ERROR");
                     }
-                });
+                });*/
         b=(Button)findViewById(R.id.button2);
         final Intent intent1=new Intent(this,otplogin.class);
 b.setOnClickListener(new View.OnClickListener() {
@@ -124,10 +118,11 @@ startActivity(intent1);
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(ch==0) {
+      /*  if(ch==0) {
             callbackManager.onActivityResult(requestCode, resultCode, data);
             startActivity(new Intent(this, activity_profile.class));
         }
+*/
         //if the requestCode is the Google Sign In code that we defined at starting
         if (requestCode == RC_SIGN_IN) {
 
