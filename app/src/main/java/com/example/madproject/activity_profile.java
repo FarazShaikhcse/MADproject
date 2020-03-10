@@ -2,21 +2,21 @@ package com.example.madproject;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class activity_profile extends AppCompatActivity {
 
-    ImageView imageView;
-    TextView textName, textEmail;
-    FirebaseAuth mAuth;
 
+    TextView textView;
+    FirebaseAuth mAuth;
+    Button b,signout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,17 +24,29 @@ public class activity_profile extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        imageView = findViewById(R.id.imageView);
-        textName = findViewById(R.id.textViewName);
-        textEmail = findViewById(R.id.textViewEmail);
-
+      textView=(TextView)findViewById(R.id.textView3);
+      b=(Button)findViewById(R.id.button3);
+      signout=(Button)findViewById(R.id.button5);
+      signout.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              mAuth.signOut();
+              startActivity(new Intent(activity_profile.this,MainActivity.class));
+          }
+      });
+      b.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              startActivity(new Intent(activity_profile.this,bussearch.class));
+          }
+      });
 
         FirebaseUser user = mAuth.getCurrentUser();
 
 
 
-        textName.setText(user.getDisplayName());
-        textEmail.setText(user.getEmail());
+        textView.setText("Welcome\n"+user.getDisplayName());
+
     }
 
     @Override
