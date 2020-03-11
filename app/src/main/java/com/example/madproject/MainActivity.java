@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     //a constant for detecting the login intent result
     private static final int RC_SIGN_IN = 234;
 Button b;
-int ch=0;
+
     //creating a GoogleSignInClient object
     GoogleSignInClient mGoogleSignInClient;
 
@@ -81,7 +81,7 @@ startActivity(intent1);
 });
         //Then we need a GoogleSignInOptions object
         //And we need to build it as below
-        ch=1;
+
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -118,11 +118,7 @@ startActivity(intent1);
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-      /*  if(ch==0) {
-            callbackManager.onActivityResult(requestCode, resultCode, data);
-            startActivity(new Intent(this, activity_profile.class));
-        }
-*/
+
         //if the requestCode is the Google Sign In code that we defined at starting
         if (requestCode == RC_SIGN_IN) {
 
