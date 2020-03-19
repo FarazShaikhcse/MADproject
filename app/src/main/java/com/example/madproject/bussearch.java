@@ -16,7 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class bussearch extends AppCompatActivity implements AdapterView.OnItemSelectedListener, RadioGroup.OnCheckedChangeListener, CompoundButton.OnCheckedChangeListener {
 Spinner spinner1,spinner2;
-    String[] stops = { "Mangalore", "Moodbidre", "Udupi", "Belthangady", "Sringeri","Hebri"};
+    String[] stops = { "--select a city--","Mangalore", "Moodbidre", "Udupi", "Belthangady", "Sringeri","Hebri"};
     Button b;
     Switch s;
     TextView from,to;
@@ -34,6 +34,7 @@ Spinner spinner1,spinner2;
         s.setOnCheckedChangeListener(this);
        spinner2.setVisibility(View.INVISIBLE);
 
+
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,7 +51,7 @@ Spinner spinner1,spinner2;
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(this,"you selected "+parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this,"you selected "+parent.getItemAtPosition(position), Toast.LENGTH_SHORT).show();
     }
 
     @Override
