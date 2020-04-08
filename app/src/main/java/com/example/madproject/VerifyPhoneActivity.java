@@ -29,7 +29,7 @@ public class VerifyPhoneActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private ProgressBar progressBar;
     private EditText editText;
-String ph;
+String ph,name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +43,7 @@ String ph;
         String phonenumber ="+91" +intent.getStringExtra("mobile");
         sendVerificationCode(phonenumber);
 ph=phonenumber;
+name=intent.getStringExtra("name");
         findViewById(R.id.buttonSignIn).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,9 +74,10 @@ ph=phonenumber;
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            Intent intent = new Intent(VerifyPhoneActivity.this, Main2Activity.class);
+                            Intent intent = new Intent(VerifyPhoneActivity.this, Main3Activity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 intent.putExtra("phone",ph);
+intent.putExtra("name",name);
                             startActivity(intent);
 
                         } else {

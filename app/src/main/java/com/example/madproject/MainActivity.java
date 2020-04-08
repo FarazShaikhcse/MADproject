@@ -110,7 +110,7 @@ startActivity(intent1);
         //and take the user to profile activity 
         if (mAuth.getCurrentUser() != null) {
             finish();
-            startActivity(new Intent(this, activity_profile.class));
+            startActivity(new Intent(this, Main3Activity.class));
         }
     }
 
